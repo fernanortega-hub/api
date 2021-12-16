@@ -9,6 +9,10 @@ import 'express-async-errors';
 
 import logger from '@shared/Logger';
 
+// Import de routers
+import userRouter from '@routes/users';
+import productRouter from '@routes/products';
+
 const app = express();
 const { BAD_REQUEST } = StatusCodes;
 
@@ -36,7 +40,8 @@ if (process.env.NODE_ENV === 'production') {
 // Add APIs
 // localhost:PUERTO/api
 // app.use('/api', BaseRouter);
-app.use('/api', router);
+app.use('/api', userRouter);
+app.use('/api', productRouter);
 
 // Print API errors
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

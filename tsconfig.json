@@ -77,7 +77,10 @@
       ],
       "@server": [
         "src/Server"
-      ]
+      ],
+      "@routes/*": [
+        "src/routes/*"
+      ],
     },
   },
   "include": [
