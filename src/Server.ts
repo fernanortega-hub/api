@@ -7,7 +7,6 @@ import express, { NextFunction, Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import 'express-async-errors';
 
-import BaseRouter from './routes';
 import logger from '@shared/Logger';
 
 const app = express();
@@ -18,7 +17,8 @@ const { BAD_REQUEST } = StatusCodes;
 /************************************************************************************
  *                              Set basic express settings
  ***********************************************************************************/
-
+// Middlewares -> Funcion o funcionalidad extra que se ejecuta antes de una peticion
+// o que sirve como codigo adicional de las depdencias del proyecto
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -34,7 +34,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add APIs
-app.use('/api', BaseRouter);
+// localhost:PUERTO/api
+// app.use('/api', BaseRouter);
+app.use('/api', router);
 
 // Print API errors
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
