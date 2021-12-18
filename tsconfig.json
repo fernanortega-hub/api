@@ -81,6 +81,12 @@
       "@routes/*": [
         "src/routes/*"
       ],
+      "@models/*": [
+        "src/models/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
     },
   },
   "include": [
