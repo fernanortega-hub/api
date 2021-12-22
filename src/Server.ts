@@ -12,6 +12,7 @@ import logger from '@shared/Logger';
 
 // Import de routers
 import userRouter from '@routes/user.router';
+import productRouter from '@routes/product.router';
 
 const app = express();
 const { BAD_REQUEST } = StatusCodes;
@@ -48,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 // localhost:PUERTO/api
 // app.use('/api', BaseRouter);
 app.use('/api', userRouter);
+app.use('/api', productRouter);
 
 // Print API errors
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

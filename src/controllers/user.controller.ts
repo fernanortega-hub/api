@@ -27,7 +27,9 @@ const userController = {
             return res.status(201).json({ message: "Done", content: newUser });
 
         } catch(err: any) {
-            return res.status(err.status ?? 400).json({ message: err.message ?? JSON.stringify(err) });
+            return res
+                .status(err.status as number ?? 400)
+                .json({ message: err.message ?? JSON.stringify(err) });
         }
     },
 
@@ -48,7 +50,9 @@ const userController = {
             return res.status(200).json({ message: "Done", content: token });
 
         } catch(err: any) {
-            return res.status(err.status ?? 400).json({ message: err.message ?? JSON.stringify(err) });
+            return res
+                .status(err.status as number ?? 400)
+                .json({ message: err.message ?? JSON.stringify(err) });
         }
     },
 
@@ -64,14 +68,17 @@ const userController = {
             if (bearer !== "Bearer" || token === "")
                 throw { status: 401, message: "Invalid token" };
 
-            const payload: JwtPayload = jwt.verify(token, process.env.TOKEN_KEY as string) as JwtPayload;
+            const payload: JwtPayload =
+                jwt.verify(token, process.env.TOKEN_KEY as string) as JwtPayload;
 
             const user = await User.findOne({ _id: payload._id });
 
             return res.status(200).json({ message: "Success", content: user });
 
         } catch(err: any) {
-            return res.status(err.status ?? 400).json({ message: err.message ?? JSON.stringify(err) });
+            return res
+                .status(err.status as number ?? 400)
+                .json({ message: err.message ?? JSON.stringify(err) });
         }
     },
 
